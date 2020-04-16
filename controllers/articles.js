@@ -17,6 +17,8 @@ router.post('/', function(req, res) {
   })
 })
 
+
+
 // GET /articles/new - display form for creating new articles
 router.get('/new', function(req, res) {
   db.author.findAll()
@@ -48,6 +50,7 @@ router.get('/:id', function(req, res) {
 router.post('/:id',(req,res)=>{
   db.comment.create(req.body)
   .then(()=>{
+    console.log('EDITED ARTILCE',req.body);
     console.log(req.params.id);
     page=`/articles/${req.params.id}`
     console.log(page)
@@ -58,7 +61,25 @@ router.post('/:id',(req,res)=>{
     console.log('Error',err)
     res.render('error')
   })
-  //res.send("post route comments")
+ 
 })
+
+router.get('/:id/update',(req,res)=>{
+  db.article.findOne({
+    where: { id: req.params.id }
+  })
+  .then(function(article) {
+    if (!article) throw Error()
+    //console.log('update article',article)
+       res.render('articles/update', { article: article })
+    
+  })
+  .catch(function(error) {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+
+})
+
 
 module.exports = router

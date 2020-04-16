@@ -1,0 +1,18 @@
+<form method="POST" action="/articles/<%=article.id%>">
+    <div class="form-group">
+      <label for="name">Title:</label>
+      <%=article.title%>
+    </div>
+  
+    <div class="form-group">
+      <label for="content">Edit Description</label>
+    <textarea type="text" class="form-control" id="content" name="content" required>
+        <%=article.content%>
+
+    </textarea>
+    </div>
+    <input type="hidden" id="articleId"  name="id" value="<%=article.id%>">
+    <input type="submit" class="btn btn-primary" value="Edit">
+  
+  </form>
+  

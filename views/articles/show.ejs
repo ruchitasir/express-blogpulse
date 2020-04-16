@@ -5,12 +5,20 @@
 </p>
 
 <p><%= article.content %></p>
-<a href="/">&larr; Back Home</a>
 <hr />
+<a href="/">&larr; Back Home</a>
+<div> 
+
+  <a href="/articles/<%=article.id%>/update" >&rarr; Edit </a> 
+</div>
+
+<hr />
+
 <div> <h4> Comments on this article </h4>
 <% article.comments.forEach(c=>{%>
-  <p>  <%=c.name %>
-  commented: <%=c.content %></p>
+      <div class="well">
+       <h4> <%=c.name %> </h4> <p> <%=c.content %></p>
+      </div>
 <% })%>
 </div>
 
