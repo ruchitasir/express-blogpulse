@@ -5,7 +5,30 @@
 </p>
 
 <p><%= article.content %></p>
+<a href="/">&larr; Back Home</a>
+<hr />
+<div> <h4> Comments on this article </h4>
+<% article.comments.forEach(c=>{%>
+  <p>  <%=c.name %>
+  commented: <%=c.content %></p>
+<% })%>
+</div>
 
 <hr />
 
-<a href="/">&larr; Back Home</a>
+<div>Add your comments here</div>
+<form method="POST" action="/articles/<%=article.id%>">
+  <div class="form-group">
+    <label for="name">Your name</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="content">Comment</label>
+    <textarea type="text" class="form-control" id="content" name="content" required>
+    </textarea>
+  </div>
+  <input type="hidden" id="articleId"  name="articleId" value="<%=article.id%>">
+  <input type="submit" class="btn btn-primary" value="Add">
+
+</form>
