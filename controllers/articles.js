@@ -30,6 +30,7 @@ router.get('/new', function(req, res) {
   })
 })
 
+
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
   db.article.findOne({
@@ -62,6 +63,20 @@ router.post('/:id',(req,res)=>{
     res.render('error')
   })
  
+})
+
+router.put('/:id',(req,res)=>{
+  
+  db.article.update({
+    content: req.body.content
+  }, {
+    where: {
+      id: req.body.id
+    }
+  }).then(function(art) {
+    // do something when done updating
+    res.redirect('/articles/'+req.body.id)
+  })
 })
 
 router.get('/:id/update',(req,res)=>{
