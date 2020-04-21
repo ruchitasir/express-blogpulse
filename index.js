@@ -40,7 +40,7 @@ app.get('/', function(req, res) {
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
 
-var server = app.listen(process.env.PORT || 8000, function() {
+var server = app.listen(process.env.PORT || 5000, function() {
   rowdy.print()
 })
 

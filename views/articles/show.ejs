@@ -5,12 +5,19 @@
 </p>
 
 <p><%= article.content %></p>
+
+<strong> Tags</strong>
+<% article.tags.forEach(t=>{%>
+  #<%=t.name%> 
+  <%})%> 
 <hr />
+
 <a href="/">&larr; Back Home</a>
 <div> 
 
   <a href="/articles/<%=article.id%>/update" >&rarr; Edit </a> 
 </div>
+
 
 <hr />
 
